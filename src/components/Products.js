@@ -17,8 +17,8 @@ const Products = () => {
         />
         <Product
           id="2"
-          title="Volkano Falcon Series Auxiliary Headphones with Mic, Black"
-          image="https://m.media-amazon.com/images/I/41GuM4Noh3L.AC_SX250.jpg"
+          title="Ricoh GRIIIx Urban Edition APS-C Compact Digiital Camera with GC-11 Casek"
+          image="https://m.media-amazon.com/images/I/61SZjQN6BAL._AC_UL480_QL65_.jpg"
           rating={5}
           price={179.99}
         />
@@ -33,15 +33,15 @@ const Products = () => {
         />
         <Product
           id="4"
-          title="P30 Smart Mini Portable Projector"
-          image="https://m.media-amazon.com/images/I/41A87yCZd6L._AC_UL320_.jpg"
+          title="Apple iPhone 16 Pro Max 256 GB: 5G Smartphone with Apple Intelligence, Camera Control, a18 Chip and a Huge Leap in Battery Life"
+          image="https://m.media-amazon.com/images/I/61iUn+SmbeL._AC_UL480_QL65_.jpg"
           rating={5}
           price={7999.99}
         />
         <Product
           id="5"
-          title="Pu Leather Case Hard Shell for Macbook Pro 13inch-Grey Leather"
-          image="https://m.media-amazon.com/images/I/517H82V0vSL._AC_UL320_.jpg"
+          title="DJI Avata 2 Fly More Combo FPV Drone with Three Batteries"
+          image="https://m.media-amazon.com/images/I/611rw1ykrAL._AC_SL1500_.jpg"
           rating={2}
           price={269.99}
         />
@@ -49,10 +49,10 @@ const Products = () => {
       <div className="products_row">
       <Product
           id="6"
-          title="5G WiFi Bluetooth Projector, YABER Native 1080P Outdoor Movie Projector with 350"
-          image="https://m.media-amazon.com/images/I/61cIWbFma8L._AC_UL320_.jpg"
+          title="Tapo C425 Smart Wire-Free Security Camera (Pack of 2)0"
+          image="https://m.media-amazon.com/images/I/41Pn5VfbSgL._AC_UL480_QL65_.jpg"
           rating={2}
-          price={2569.99} 
+          price={54.99} 
         />
       </div>
     </>
