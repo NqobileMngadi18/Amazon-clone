@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import CurrencyFormat from "react-currency-format";
+import CurrencyInput from "react-currency-input-field";
 import axios from "../axios";
 import { Link, useHistory } from "react-router-dom";
 import ShoppingContext from "../context/shopping/shoppingContext";
@@ -113,13 +113,13 @@ const Payment = () => {
             <form onSubmit={handleSubmit}>
               <CardElement onChange={handleChange} />
               <div className="payment_price_container">
-                <CurrencyFormat
-                  renderText={(value) => <h3>Order Total: {value}</h3>}
-                  decimalScale={2}
+                <CurrencyInput
                   value={getBasketTotal(basket)}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"$"}
+                  prefix="$"
+                  decimalsLimit={2}
+                  disableGroupSeparators={false}
+                  readOnly
+                  onValueChange={() => {}}
                 />
                 <button disabled={processing || disabled || succeeded}>
                   <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
