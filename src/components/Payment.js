@@ -33,37 +33,13 @@ const Payment = () => {
       setClientSecret(response.data.clientSecret);
     };
     getClientSecret();
-  }, [basket]);
+  }, [basket, getBasketTotal]);
 
   console.log("The secret is => ", clientSecret);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setProcessing(true);
-
-    const payload = await stripe
-      .confirmCardPayment(clientSecret, {
-        payment_method: { card: elements.getElement(CardElement) },
-      })
-      .then(({ paymentIntent }) => {
-        //Payment Intent = payment confirmation
-        db.collection("user")
-          .doc(user?.uid)
-          .collection("orders")
-          .doc(paymentIntent.id)
-          .set({
-            basket: basket,
-            amount: paymentIntent.amount,
-            created: paymentIntent.create,
-          });
-        setSucceeded(true);
-        setError(null);
-        setProcessing(false);
-        //Empty the basket
-        emptyBasket();
-        //Redirect the user to order page
-        history.push("/orders");
-      });
   };
 
   const handleChange = (e) => {
