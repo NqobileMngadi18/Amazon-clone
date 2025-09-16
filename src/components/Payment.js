@@ -24,15 +24,28 @@ const Payment = () => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    const getClientSecret = async () => {
-      const response = await axios({
-        method: "POST",
-        url: `/payments/create?total=${getBasketTotal(basket) * 100}`,
-      });
-      setClientSecret(response.data.clientSecret);
-    };
+  let isMounted = true; // safeguard to cancel updates if component unmounts
+
+  const getClientSecret = async () => {
+    try {
+      const total = basket?.reduce((amount, item) => item.price + amount, 0); 
+      const response = await axios.post(`/payments/create?total=${total * 100}`);
+      if (isMounted) {
+        setClientSecret(response.data.clientSecret);
+      }
+    } catch (err) {
+      console.error("Error fetching client secret:", err);
+    }
+  };
+
+  if (basket?.length > 0) {
     getClientSecret();
-  }, [basket, getBasketTotal]);
+  }
+
+  return () => {
+    isMounted = false;
+  };
+}, [basket]);
 
   console.log("The secret is => ", clientSecret);
 

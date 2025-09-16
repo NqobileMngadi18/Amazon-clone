@@ -23,16 +23,18 @@ const App = () => {
   const shoppingContext = useContext(ShoppingContext);
   const { setUser } = shoppingContext;
   useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
-      console.log("User is -> ", authUser);
+  const unsubscribe = auth.onAuthStateChanged((authUser) => {
+    console.log("User is -> ", authUser);
 
-      if (authUser) {
-        setUser(authUser);
-      } else {
-        setUser(null);
-      }
-    });
-  }, [setUser]);
+    if (authUser) {
+      setUser(authUser);
+    } else {
+      setUser(null);
+    }
+  });
+  return () => unsubscribe();
+}, [setUser]);
+
   return (
     <>
       <Header />
